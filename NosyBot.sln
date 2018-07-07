@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8890890C-44DD-4F96-B4B8-63E608A4F1AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CDB6BDC3-8D9A-4879-AF2B-A6BBE7EC967E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BDE2A414-AF42-41CD-A341-BEB8F75FB28E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{4853E7E5-7B91-4310-A3E4-2CB16DB346BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Functions", "NosyFunctions\NosyBot.Functions.csproj", "{3C3A069E-9DDB-457A-810D-1B36567D3019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyFrontend", "NosyFrontend\NosyFrontend.csproj", "{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Common", "NosyBot.Common\NosyBot.Common.csproj", "{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Services", "NosyBot.Services\NosyBot.Services.csproj", "{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C3A069E-9DDB-457A-810D-1B36567D3019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C3A069E-9DDB-457A-810D-1B36567D3019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C3A069E-9DDB-457A-810D-1B36567D3019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C3A069E-9DDB-457A-810D-1B36567D3019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C3A069E-9DDB-457A-810D-1B36567D3019} = {4853E7E5-7B91-4310-A3E4-2CB16DB346BF}
+		{9CE2459F-5AF1-4F13-818A-2EB841DFFA45} = {8890890C-44DD-4F96-B4B8-63E608A4F1AD}
+		{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554} = {CDB6BDC3-8D9A-4879-AF2B-A6BBE7EC967E}
+		{F5BBA20B-B5C8-42A5-A81E-22C3DA0901C1} = {BDE2A414-AF42-41CD-A341-BEB8F75FB28E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B69FD68-9319-459C-B9FB-0A7278624E02}
+	EndGlobalSection
+EndGlobal
