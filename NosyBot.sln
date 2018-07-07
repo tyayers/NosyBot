@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{4853E7E5-7B91-4310-A3E4-2CB16DB346BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Functions", "NosyFunctions\NosyBot.Functions.csproj", "{3C3A069E-9DDB-457A-810D-1B36567D3019}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Functions", "NosyBot.Functions\NosyBot.Functions.csproj", "{3C3A069E-9DDB-457A-810D-1B36567D3019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyFrontend", "NosyFrontend\NosyFrontend.csproj", "{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyFrontend", "NosyBot.Frontend\NosyFrontend.csproj", "{9CE2459F-5AF1-4F13-818A-2EB841DFFA45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosyBot.Common", "NosyBot.Common\NosyBot.Common.csproj", "{6A35AB3C-F02F-402F-BFF1-7C31C0F4E554}"
 EndProject
