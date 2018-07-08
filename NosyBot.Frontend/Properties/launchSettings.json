@@ -15,7 +15,8 @@
       "launchUrl": "index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "NewsConnectionString": "Server=tcp:newsybot.database.windows.net,1433;Initial Catalog=PROD-NEWSYBOT;Persist Security Info=False;User ID=tyayers;Password=Rushmore%12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        "NewsConnectionString": "Server=tcp:newsybot.database.windows.net,1433;Initial Catalog=PROD-NEWSYBOT;Persist Security Info=False;User ID=tyayers;Password=Rushmore%12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+        "TranslatorKey": "8f9bb0a9f0ea41f8814bd21e64e3b205"
       }
     },
     "NosyFrontend": {

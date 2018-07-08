@@ -37,6 +37,7 @@ namespace NosyBot.Services.Utilities
                                 {
                                     Title = item.Element("title").Value,
                                     Description = item.Element("description").Value,
+                                    Language = provider.Language,
                                     Url = item.Element("link").Value,
                                     ImageUrl = NosyBot.Services.Utilities.RssUtilities.GetImageUrl(item),
                                     ProviderId = provider.Id,
