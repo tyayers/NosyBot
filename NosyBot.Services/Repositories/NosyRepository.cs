@@ -131,7 +131,7 @@ namespace NosyBot.Services.Repositories
             return results;
         }
 
-        public WorldStoryRecords GetLatestStories()
+        public WorldStoryRecords GetLatestStories(int NumberPerRegion)
         {
             SqlConnection con = null;
             WorldStoryRecords results = new WorldStoryRecords();
@@ -141,9 +141,9 @@ namespace NosyBot.Services.Repositories
                 con.Open();
                 using (var db = new Database(con))
                 {
-                    results.Americas = db.Fetch<StoryRecord>($"SELECT TOP(5) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'americas' ORDER BY Stories.PublishDate DESC");
-                    results.EMEA = db.Fetch<StoryRecord>($"SELECT TOP(5) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'emea' ORDER BY Stories.PublishDate DESC");
-                    results.APAC = db.Fetch<StoryRecord>($"SELECT TOP(5) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'apac' ORDER BY Stories.PublishDate DESC");
+                    results.Americas = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'americas' ORDER BY Stories.PublishDate DESC");
+                    results.EMEA = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'emea' ORDER BY Stories.PublishDate DESC");
+                    results.APAC = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'apac' ORDER BY Stories.PublishDate DESC");
                 }
             }
             catch (Exception ex)

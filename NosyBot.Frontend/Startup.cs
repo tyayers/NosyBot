@@ -41,8 +41,8 @@ namespace NosyFrontend
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
-
             app.UseMvc();
         }
     }

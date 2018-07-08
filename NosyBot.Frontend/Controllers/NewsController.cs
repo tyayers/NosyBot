@@ -13,22 +13,27 @@ namespace NosyFrontend.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<WorldStoryRecords> Get()
+        public ActionResult<WorldStoryRecords> Get([FromQuery] int count = 10)
         {
 
             NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
 
-            WorldStoryRecords records = repo.GetLatestStories();
+            WorldStoryRecords records = repo.GetLatestStories(count);
 
             return records;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/values/5
+        //[HttpGet("{count}")]
+        //public ActionResult<WorldStoryRecords> Get(int count = 10)
+        //{
+
+        //    NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
+
+        //    WorldStoryRecords records = repo.GetLatestStories(count);
+
+        //    return records;
+        //}
 
         // POST api/values
         [HttpPost]
