@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\NosyBot.Common\NosyBot.Common.csproj" />
+    <ProjectReference Include="..\NosyBot.Services\NosyBot.Services.csproj" />
   </ItemGroup>
 
 </Project>

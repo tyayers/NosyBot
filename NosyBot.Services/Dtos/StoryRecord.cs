@@ -9,8 +9,9 @@ namespace NosyBot.Services.Dtos
     [PrimaryKey("Id")]
     public class StoryRecord
     {
-        public int ProviderId { get; set; }
         public int Id { get; set; }
+        public int ProviderId { get; set; }
+        public string ProviderName { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }

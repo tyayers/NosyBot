@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NosyBot.Services.Dtos;
 
 namespace NosyFrontend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class NewsController : ControllerBase
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<WorldStoryRecords> Get()
         {
-            return new string[] { "value1", "value2" };
+
+            NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
+
+            WorldStoryRecords records = repo.GetLatestStories();
+
+            return records;
         }
 
         // GET api/values/5

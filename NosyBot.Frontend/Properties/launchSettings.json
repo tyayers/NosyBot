@@ -12,18 +12,20 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "index.html",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NewsConnectionString": "Server=tcp:newsybot.database.windows.net,1433;Initial Catalog=PROD-NEWSYBOT;Persist Security Info=False;User ID=tyayers;Password=Rushmore%12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
       }
     },
     "NosyFrontend": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/news",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "NewsConnectionString": "Server=tcp:newsybot.database.windows.net,1433;Initial Catalog=PROD-NEWSYBOT;Persist Security Info=False;User ID=tyayers;Password=Rushmore%12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
       }
     }
   }

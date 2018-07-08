@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+-<rdf:RDF xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://purl.org/rss/1.0/">
+
+
+-<channel rdf:about="https://mainichi.jp/rss/etc/mainichi-flash.rss">
+
+<title>ニュース速報（総合）</title>
+
+<link>https://mainichi.jp/rss/etc/mainichi-flash.rss</link>
+
+<description/>
+
+<dc:language>ja</dc:language>
+
+<dc:rights>The copyright of the materials belongs to the Mainichi Newspapers Co. unless stated otherwise.</dc:rights>
+
+<dc:date>2018-07-08T06:26:15+09:00</dc:date>
+
+<dc:publisher>毎日新聞社</dc:publisher>
+
+<dc:creator>毎日新聞社</dc:creator>
+
+
+-<items>
+
+
+-<rdf:Seq>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00e/050/156000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00e/050/154000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/151000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/150000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/030/149000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/030/142000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/138000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/126000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/030/125000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/122000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/121000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/116000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/112000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/109000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/107000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/099000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/097000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/092000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/050/090000c"/>
+
+<rdf:li rdf:resource="https://mainichi.jp/articles/20180708/k00/00m/040/088000c"/>
+
+</rdf:Seq>
+
+</items>
+
+</channel>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00e/050/156000c">
+
+<title>ロシアＷ杯:クロアチア４強　ＰＫ戦でロシア降す</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00e/050/156000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T06:16:16+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00e/050/154000c">
+
+<title>ウィンブルドン:錦織が３回戦ストレート勝ち　１６強入り</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00e/050/154000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T05:25:48+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/151000c">
+
+<title>ウィンブルドン:大坂なおみ３回戦敗退</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/151000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T01:20:26+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/150000c">
+
+<title>ロシアＷ杯:イングランドが７大会ぶり４強</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/150000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T01:13:55+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/030/149000c">
+
+<title>米朝協議:北朝鮮、米を批判「非核化の意思揺らぐ」</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/030/149000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T01:20:22+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/030/142000c">
+
+<title>台湾:蔡総統、豪雨被害に日本語メッセージ</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/030/142000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T00:01:33+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/138000c">
+
+<title>プロ野球:極上の投球で巨人手玉に　広島・野村</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/138000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T23:48:27+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/126000c">
+
+<title>豪雨:５１人死亡、７６人不明　広島・愛媛で被害拡大</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/126000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T02:58:42+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/030/125000c">
+
+<title>米軍:駆逐艦２隻、台湾海峡を航行　中国けん制か</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/030/125000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T22:50:51+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/122000c">
+
+<title>ラグビー:香港がＷ杯最終予選へ</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/122000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T22:27:17+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/121000c">
+
+<title>豪雨:９都府県警が部隊派遣　広島、岡山で捜索や救出</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/121000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T22:38:20+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/116000c">
+
+<title>豪雨:一面の茶色、屋根に避難　空から見た倉敷市真備</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/116000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T00:11:46+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/112000c">
+
+<title>豪雨:「地域の宝なのに」離島で母子犠牲　愛媛</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/112000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T00:13:26+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/109000c">
+
+<title>豪雨:老犬救助の途中で犠牲に　福岡</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/109000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T00:12:34+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/107000c">
+
+<title>豪雨:床上浸水、３０分で肩の高さに　岡山・倉敷</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/107000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T00:14:13+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/099000c">
+
+<title>大雨:東海の交通機関、終日乱れる</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/099000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T21:40:28+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/097000c">
+
+<title>豪雨:岐阜で６万人避難指示</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/097000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-08T01:42:22+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/092000c">
+
+<title>スーパーラグビー:サンウルブズは大敗　豪ワラタス戦</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/092000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T22:00:56+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/050/090000c">
+
+<title>プロ野球:広島５発、巨人に快勝</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/050/090000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T23:38:26+09:00</dc:date>
+
+</item>
+
+
+-<item rdf:about="https://mainichi.jp/articles/20180708/k00/00m/040/088000c">
+
+<title>核兵器禁止条約１年:被爆者ら署名活動　早期発効訴え</title>
+
+<link>https://mainichi.jp/articles/20180708/k00/00m/040/088000c</link>
+
+<dc:subject>ニュース</dc:subject>
+
+<dc:date>2018-07-07T21:19:05+09:00</dc:date>
+
+</item>
+
+</rdf:RDF>

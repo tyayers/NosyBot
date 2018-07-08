@@ -1,23 +1,15 @@
-
-using System.IO;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
 using System;
-using NosyBot.Services.Dtos;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Xml.Linq;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using NosyBot.Services.Dtos;
 
 namespace NosyFunctions
 {
-    public static class CheckNews
+    public static class CheckNewsTimer
     {
-        [FunctionName("CheckNews")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequest req, TraceWriter log)
+        [FunctionName("CheckNewsTimer")]
+        public static void Run([TimerTrigger("0 */30 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
@@ -43,8 +35,6 @@ namespace NosyFunctions
                     }
                 }
             }
-
-            return new OkObjectResult("news checked.");
         }
     }
 }
