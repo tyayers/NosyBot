@@ -38,8 +38,10 @@ namespace NosyFunctions
                     // Save to db
                     foreach (StoryRecord story in stories)
                     {
-                        System.Diagnostics.Trace.TraceInformation($"Adding story {story.Title} from provider {story.ProviderName}");
-                        repo.InsertStory(story);
+                        if (!repo.CheckIfStoryExists(story)) { 
+                            System.Diagnostics.Trace.TraceInformation($"Adding story {story.Title} from provider {story.ProviderName}");
+                            repo.InsertStory(story);
+                        }
                     }
                 }
             }

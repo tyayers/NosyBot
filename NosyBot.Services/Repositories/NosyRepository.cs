@@ -33,6 +33,32 @@ namespace NosyBot.Services.Repositories
             }
         }
 
+        public bool CheckIfStoryExists(StoryRecord story)
+        {
+            bool result = false;
+            SqlConnection con = null;
+            try
+            {
+                con = new SqlConnection(System.Environment.GetEnvironmentVariable("NewsConnectionString", EnvironmentVariableTarget.Process));
+                con.Open();
+                using (var db = new Database(con))
+                {
+                    List<StoryRecord> results = db.Fetch<StoryRecord>($"where Url=N'{story.Url}'");
+                    if (results != null && results.Count > 0)
+                        result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.TraceError("NosyRepo error in GetProviders. " + ex.ToString());
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+            return result;
+        }
+
         public List<ProviderRecord> GetProviders()
         {
             SqlConnection con = null;

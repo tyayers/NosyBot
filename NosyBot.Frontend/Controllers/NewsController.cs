@@ -19,30 +19,40 @@ namespace NosyFrontend.Controllers
 
             WorldStoryRecords records = repo.GetLatestStories(count);
 
+            TranslateCommand translate = new TranslateCommand() { DisplayLanguage = displayLanguage };
+
             // Now translate AMERICAS if necessary
             foreach (StoryRecord story in records.Americas)
             {
                 story.TranslatedTitle = story.Title;
 
                 if (story.Language != null && story.Language != displayLanguage)
-                    story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
+                    translate.AddStory(story);
+                    //story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
             }
+
             // EMEA
             foreach (StoryRecord story in records.EMEA)
             {
                 story.TranslatedTitle = story.Title;
 
                 if (story.Language != null && story.Language != displayLanguage)
-                    story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
+                    translate.AddStory(story);
+                    //story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
             }
+
             // APAC
             foreach (StoryRecord story in records.APAC)
             {
                 story.TranslatedTitle = story.Title;
 
                 if (story.Language != null && story.Language != displayLanguage)
-                    story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
+                    translate.AddStory(story);
+                    //story.TranslatedTitle = NosyBot.Services.Utilities.ServiceProxies.GetTranslation(story.Title, story.Language, displayLanguage).Result;
             }
+
+            NosyBot.Services.Utilities.ServiceProxies.GetTranslations(translate);
+
             return records;
         }
 
