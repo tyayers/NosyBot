@@ -13,12 +13,16 @@ namespace NosyBot.Services.Dtos
         public string Url { get; set; } = "";
         public int ProviderId { get; set; }
         public string ProviderName { get; set; }
+        [ResultColumn]
+        public string LogoUrl { get; set; }
         public string Title { get; set; }
         [Ignore]
         public string TranslatedTitle { get; set; } = "";
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public DateTime PublishDate { get; set; }
+        [ResultColumn]
+        public string Country { get; set; }
         public string Language { get; set; }
         public DateTime LastUpdated { get; set; }
     }

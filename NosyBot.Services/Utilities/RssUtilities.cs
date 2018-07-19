@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace NosyBot.Services.Utilities
 {
@@ -105,6 +106,18 @@ namespace NosyBot.Services.Utilities
                 dateElem = channel.Element("date");
                 if (dateElem != null)
                     result = dateElem.Value;
+                else
+                {
+                    dateElem = channel.Element("pubDate");
+                    if (dateElem != null)
+                        result = dateElem.Value;
+                    else
+                    {
+                        dateElem = channel.Descendants("pubDate").First();
+                        if (dateElem != null)
+                            result = dateElem.Value;
+                    }
+                }
             }
 
             return result;

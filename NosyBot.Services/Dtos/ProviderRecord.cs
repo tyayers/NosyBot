@@ -16,6 +16,7 @@ namespace NosyBot.Services.Dtos
         public string Region { get; set; }
         public string Country { get; set; }
         public string RssUrl { get; set; }
+        public string LogoUrl { get; set; }
         public DateTime LastPublished { get; set; }
         public DateTime LastUpdated { get; set; }
     }

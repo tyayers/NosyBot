@@ -39,21 +39,21 @@
                 if (data["americas"] != undefined) {
                     for (var i in data["americas"]) {
                         var story = data["americas"][i];
-                        $("#americas-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='https://f-origin.hypotheses.org/wp-content/blogs.dir/235/files/2013/03/Logo_NYT.png' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
+                        $("#americas-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
                     }
                 }
 
                 if (data["emea"] != undefined) {
                     for (var i in data["emea"]) {
                         var story = data["emea"][i];
-                        $("#emea-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'>" + story["translatedTitle"] + "</a>");
+                        $("#emea-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
                     }
                 }
 
                 if (data["apac"] != undefined) {
                     for (var i in data["apac"]) {
                         var story = data["apac"][i];
-                        $("#apac-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'>" + story["translatedTitle"] + "</a>");
+                        $("#apac-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
                     }
                 }
             });
