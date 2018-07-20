@@ -157,6 +157,31 @@ namespace NosyBot.Services.Repositories
             return results;
         }
 
+        public List<StoryRecord> GetLatestStoriesForCountry(string Country, int Number)
+        {
+            SqlConnection con = null;
+            List<StoryRecord> results = new List<StoryRecord>();
+            try
+            {
+                con = new SqlConnection(System.Environment.GetEnvironmentVariable("NewsConnectionString", EnvironmentVariableTarget.Process));
+                con.Open();
+                using (var db = new Database(con))
+                {
+                    results = db.Fetch<StoryRecord>($"SELECT TOP({Number}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Country = N'{Country}' ORDER BY Stories.PublishDate DESC");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.TraceError("NosyRepo error in GetLatestStoriesForCountry. " + ex.ToString());
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+            return results;
+        }
+
         public WorldStoryRecords GetLatestStories(int NumberPerRegion)
         {
             SqlConnection con = null;
@@ -167,14 +192,14 @@ namespace NosyBot.Services.Repositories
                 con.Open();
                 using (var db = new Database(con))
                 {
-                    results.Americas = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'americas' ORDER BY Stories.PublishDate DESC");
-                    results.EMEA = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'emea' ORDER BY Stories.PublishDate DESC");
-                    results.APAC = db.Fetch<StoryRecord>($"SELECT TOP({NumberPerRegion}) * FROM Stories INNER JOIN Providers ON Stories.ProviderId = Providers.Id WHERE Providers.Region = N'apac' ORDER BY Stories.PublishDate DESC");
+                    results.Americas = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerRegion}) * FROM Stories WHERE Providers.Region = N'americas' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.EMEA = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerRegion}) * FROM Stories WHERE Providers.Region = N'emea' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.APAC = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerRegion}) * FROM Stories WHERE Providers.Region = N'apac' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.TraceError("NosyRepo error in GetProviders. " + ex.ToString());
+                System.Diagnostics.Trace.TraceError("NosyRepo error in GetLatestStories. " + ex.ToString());
             }
             finally
             {

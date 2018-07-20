@@ -56,17 +56,27 @@ namespace NosyFrontend.Controllers
             return records;
         }
 
-        //// GET api/values/5
-        //[HttpGet("{count}")]
-        //public ActionResult<WorldStoryRecords> Get(int count = 10)
-        //{
+        // GET api/news/5
+        [HttpGet("{country}")]
+        public ActionResult<List<StoryRecord>> Get(string country = "us", [FromQuery] int count = 10, [FromQuery] string displayLanguage = "en")
+        {
+            NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
 
-        //    NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
+            List<StoryRecord> records = repo.GetLatestStoriesForCountry(country, count);
+            TranslateCommand translate = new TranslateCommand() { DisplayLanguage = displayLanguage };
 
-        //    WorldStoryRecords records = repo.GetLatestStories(count);
+            foreach (StoryRecord story in records)
+            {
+                story.TranslatedTitle = story.Title;
 
-        //    return records;
-        //}
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            NosyBot.Services.Utilities.ServiceProxies.GetTranslations(translate);
+
+            return records;
+        }
 
         // POST api/values
         [HttpPost]

@@ -18,6 +18,9 @@
     <script type="text/javascript" src="js/jquery.vmap.sampledata.js"></script>
 
     <script>
+
+        var displayLanguage = "en";
+
         jQuery(document).ready(function () {
             jQuery('#vmap').vectorMap({
                 map: 'world_en',
@@ -29,37 +32,86 @@
                 showTooltip: true,
                 scaleColors: ['#C8EEFF', '#006491'],
                 values: sample_data,
-                normalizeFunction: 'polynomial'
+                normalizeFunction: 'polynomial',
+                onRegionClick: function (element, code, region) {
+                    var message = 'You clicked "'
+                        + region
+                        + '" which has the code: '
+                        + code.toUpperCase();
+
+
+
+                    $.get("api/news/" + code + "?count=100&displayLanguage=" + displayLanguage, function (data) {
+
+                        if (data != undefined) {
+
+                            //$("#modal-news").html("<button type='button' class='list-group-item list-group-item-action active'>Stories crazy stuff!</button>");
+                            $("#modal-news").html("");
+
+                            for (var i in data) {
+                                var story = data[i];
+                                $("#modal-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+                    });
+
+                    $('#storiesModal').modal();
+                    //alert(message);
+                }
             });
 
             //$('#vmap').css("height", $(document).height() * .75);
 
-            $.get("api/news?count=15", function (data) {
+            refreshGlobalStories();
+        });
+
+        $(document).ready(ajustamodal);
+        $(window).resize(ajustamodal);
+
+        function refreshGlobalStories() {
+            $.get("api/news?count=15&displayLanguage=" + displayLanguage, function (data) {
+
+                $("#americas-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Americas</button>");
+                $("#emea-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>EMEA</button>");
+                $("#apac-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>APAC</button>");
 
                 if (data["americas"] != undefined) {
                     for (var i in data["americas"]) {
                         var story = data["americas"][i];
-                        $("#americas-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
+                        $("#americas-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                     }
                 }
 
                 if (data["emea"] != undefined) {
                     for (var i in data["emea"]) {
                         var story = data["emea"][i];
-                        $("#emea-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
+                        $("#emea-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                     }
                 }
 
                 if (data["apac"] != undefined) {
                     for (var i in data["apac"]) {
                         var story = data["apac"][i];
-                        $("#apac-top-news").append("<a class='list-group-item list-group-item-action' target='_blank' href='" + story["url"] + "' role='button'><img src='img/countries/" + story["country"] + ".png' style='width:30px;'/> <img src='" + story["logoUrl"] + "' style='width:30px;'/> " + story["translatedTitle"] + "</a>");
+                        $("#apac-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                     }
                 }
             });
-        });
+        }
 
+        function getStoryDiv(title, storyUrl, logoUrl, countryUrl) {
+            // return "<a class='list-group-item list-group-item-action container' target='_blank' href='" + storyUrl + "' role='button'><img src='" + countryUrl + "' style='width:30px;'/><br><img src='" + logoUrl + "' style='width:30px;'/> " + title + "</a>";
+            return "<div class='list-group-item list-group-item-action container'><div class='row'><div class='col-2'><div style='margin-bottom: 3px;'><img src='" + countryUrl + "' style='width:30px;'/></div><div><img src='" + logoUrl + "' style='width:30px;'/></div></div><div class='col-10'><a target='_blank' href='" + storyUrl + "' role='button'>" + title + "</a></div></div>";
+        }
 
+        function ajustamodal() {
+            var altura = $(window).height() - 180; //155; //value corresponding to the modal heading + footer
+            $(".modal-scroll").css({ "height": altura, "overflow-y": "auto" });
+        }
+
+        function setDisplayLanguage(language) {
+            displayLanguage = language;
+            refreshGlobalStories();
+        }
       
     </script>
   </head>
@@ -82,8 +134,8 @@
                               Display Language
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="#">English</a>
-                              <a class="dropdown-item" href="#">Deutsch</a>
+                              <a class="dropdown-item" href="#" onclick="setDisplayLanguage('en')">English</a>
+                              <a class="dropdown-item" href="#" onclick="setDisplayLanguage('de')">Deutsch</a>
                           </div>
                       </li>
                   </ul>
@@ -121,7 +173,29 @@
           </div>
       </div>
 
-
+      <!-- Stories Modal -->
+      <div class="modal fade"  id="storiesModal" tabindex="-1" role="dialog" aria-labelledby="storiesModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Stories crazy stuff!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body modal-scroll">
+                      <div id="modal-news" class="list-group">
+                          <!--<button type="button" class="list-group-item list-group-item-action active">
+                              Stories crazy stuff!
+                          </button>-->
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
