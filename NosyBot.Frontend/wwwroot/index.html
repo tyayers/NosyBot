@@ -24,7 +24,7 @@
         jQuery(document).ready(function () {
             jQuery('#vmap').vectorMap({
                 map: 'world_en',
-                backgroundColor: '#fff',
+                backgroundColor: '#E9ECEF',
                 color: '#ffffff',
                 hoverOpacity: 0.7,
                 selectedColor: '#666666',
@@ -117,7 +117,6 @@
     </script>
   </head>
   <body>
-      <!-- Image and text -->
       <nav class="navbar navbar-expand-lg navbar-light navbar-center bg-light sticky-top">
           <a class="navbar-brand" style="color: rgba(0, 0, 0, 0.5) ;" href="#">
               <img src="img/world2.png" width="30" height="30" class="d-inline-block align-top" alt="" />
@@ -147,7 +146,18 @@
           </div>
       </nav>
 
-      <div id="vmap" style="width: 100%; height: 86vh;"></div>
+      <div class="jumbotron">
+          <h1 class="display-4">Hello World!</h1>
+          <p class="lead">This is a simple web app to bing quality news together worldwide, and make it easy to see what's up everywhere around this beautiful globe.  The news story titles are translated in your chosen language, which you can change at any time under "Language" above in the menu bar.</p>
+          <p class="lead">Simply click on a country below to see the translated news from there, or scroll down to the global region consolidated view below.</p>
+          <hr class="my-4" />
+          <p><div id="vmap" style="width: 100%; height: 86vh;"></div></p>
+          <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button">How do I use it?</a>
+          </p>
+      </div>
+
+      
 
       <div id="main-container" class="container-fluid">
           <div class="row">
