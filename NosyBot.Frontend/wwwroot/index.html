@@ -69,32 +69,40 @@
         $(window).resize(ajustamodal);
 
         function refreshGlobalStories() {
-            $.get("api/news?count=7&displayLanguage=" + displayLanguage, function (data) {
 
-                $("#americas-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Americas</button>");
-                $("#emea-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>EMEA</button>");
-                $("#apac-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>APAC</button>");
+            $.get(
+                {
+                    url: "api/news?count=7&displayLanguage=" + displayLanguage,
+                    headers: {
+                        'Cache-Control': 'max-age=1200'
+                    },
+                    success: function (data) {
 
-                if (data["americas"] != undefined) {
-                    for (var i in data["americas"]) {
-                        var story = data["americas"][i];
-                        $("#americas-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                        $("#americas-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Americas</button>");
+                        $("#emea-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>EMEA</button>");
+                        $("#apac-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>APAC</button>");
+
+                        if (data["americas"] != undefined) {
+                            for (var i in data["americas"]) {
+                                var story = data["americas"][i];
+                                $("#americas-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+
+                        if (data["emea"] != undefined) {
+                            for (var i in data["emea"]) {
+                                var story = data["emea"][i];
+                                $("#emea-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+
+                        if (data["apac"] != undefined) {
+                            for (var i in data["apac"]) {
+                                var story = data["apac"][i];
+                                $("#apac-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
                     }
-                }
-
-                if (data["emea"] != undefined) {
-                    for (var i in data["emea"]) {
-                        var story = data["emea"][i];
-                        $("#emea-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
-                    }
-                }
-
-                if (data["apac"] != undefined) {
-                    for (var i in data["apac"]) {
-                        var story = data["apac"][i];
-                        $("#apac-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
-                    }
-                }
             });
         }
 
@@ -147,7 +155,7 @@
       </nav>
 
       <div class="jumbotron">
-          <h1 class="display-4">Hello World!</h1>
+          <h1 class="display-4">What's Up?</h1>
           <p class="lead">This is a simple web app to bing quality news together worldwide, and make it easy to see what's up everywhere around this beautiful globe.  The news story titles are translated in your chosen language, which you can change at any time under "Language" above in the menu bar.</p>
           <p class="lead">Simply click on a country below to see the translated news from there, or scroll down to the global region consolidated view below.</p>
           <hr class="my-4" />
@@ -156,9 +164,13 @@
               <a class="btn btn-primary btn-lg" href="#" role="button">How do I use it?</a>
           </p>
       </div>
-
-      
-
+      <br />
+      <div class="card">
+          <div class="card-body">
+              Here are the latest news stories from trusted news sources in each of the three main global regions - the Americas (North and South America), EMEA (Europe, Middle East and Africa) and APAC (Asia Pacific).
+          </div>
+      </div>
+      <br />
       <div id="main-container" class="container-fluid">
           <div class="row">
               <div class="col-sm">
