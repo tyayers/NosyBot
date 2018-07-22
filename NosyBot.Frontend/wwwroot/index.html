@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <title>WUW?</title>
+    <title>WuW?</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,7 +43,7 @@
 
                     $.get("api/news/" + code + "?count=100&displayLanguage=" + displayLanguage, function (data) {
 
-                        if (data != undefined) {
+                        if (data != undefined && data.length > 0) {
 
                             //$("#modal-news").html("<button type='button' class='list-group-item list-group-item-action active'>Stories crazy stuff!</button>");
                             $("#modal-news").html("");
@@ -52,10 +52,16 @@
                                 var story = data[i];
                                 $("#modal-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                             }
+
+                            $('#storiesModal').modal();
+                        }
+                        else {
+                            // no news for that country
+                            $('#messageModal').modal();
                         }
                     });
 
-                    $('#storiesModal').modal();
+
                     //alert(message);
                 }
             });
@@ -72,34 +78,58 @@
 
             $.get(
                 {
-                    url: "api/news?count=7&displayLanguage=" + displayLanguage,
+                    url: "api/news/continents?count=7&displayLanguage=" + displayLanguage,
                     headers: {
                         'Cache-Control': 'max-age=1200'
                     },
                     success: function (data) {
 
-                        $("#americas-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Americas</button>");
-                        $("#emea-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>EMEA</button>");
-                        $("#apac-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>APAC</button>");
+                        $("#north-america-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>North America</button>");
+                        $("#south-america-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>South America</button>");
+                        $("#europe-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Europe</button>");
+                        $("#asia-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Asia</button>");
+                        $("#africa-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Africa</button>");
+                        $("#australia-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Australia</button>");
 
-                        if (data["americas"] != undefined) {
-                            for (var i in data["americas"]) {
-                                var story = data["americas"][i];
-                                $("#americas-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                        if (data["northAmerica"] != undefined) {
+                            for (var i in data["northAmerica"]) {
+                                var story = data["northAmerica"][i];
+                                $("#north-america-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                             }
                         }
 
-                        if (data["emea"] != undefined) {
-                            for (var i in data["emea"]) {
-                                var story = data["emea"][i];
-                                $("#emea-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                        if (data["southAmerica"] != undefined) {
+                            for (var i in data["southAmerica"]) {
+                                var story = data["southAmerica"][i];
+                                $("#south-america-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                             }
                         }
 
-                        if (data["apac"] != undefined) {
-                            for (var i in data["apac"]) {
-                                var story = data["apac"][i];
-                                $("#apac-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                        if (data["europe"] != undefined) {
+                            for (var i in data["europe"]) {
+                                var story = data["europe"][i];
+                                $("#europe-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+
+                        if (data["asia"] != undefined) {
+                            for (var i in data["asia"]) {
+                                var story = data["asia"][i];
+                                $("#asia-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+
+                        if (data["africa"] != undefined) {
+                            for (var i in data["africa"]) {
+                                var story = data["africa"][i];
+                                $("#africa-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                            }
+                        }
+
+                        if (data["australia"] != undefined) {
+                            for (var i in data["australia"]) {
+                                var story = data["australia"][i];
+                                $("#australia-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
                             }
                         }
                     }
@@ -128,7 +158,7 @@
       <nav class="navbar navbar-expand-lg navbar-light navbar-center bg-light sticky-top">
           <a class="navbar-brand" style="color: rgba(0, 0, 0, 0.5) ;" href="#">
               <img src="img/world2.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-              What's Up World?
+              What's up, World?
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -154,9 +184,13 @@
           </div>
       </nav>
 
+      <!-- Jumbotron -->
+
       <div class="jumbotron">
-          <h1 class="display-4">What's Up?</h1>
-          <p class="lead">This is a simple web app to bing quality news together worldwide, and make it easy to see what's up everywhere around this beautiful globe.  The news story titles are translated in your chosen language, which you can change at any time under "Language" above in the menu bar.</p>
+          <h1 class="display-4">What's up?</h1>
+          <p class="lead">How to sort fact from fiction in the world today?  By checking Facebook, Twitter or Google?  No, and let's say no to algorithms deciding what we see.  Just because it's possible doesn't make it a good idea.  Let's get back to basics, and trust professionals to descibe the complex events around us.
+          This web app is an attempt to showcase professional reporting from around the world.  Is journalism perfect, and do we always agree with their perspectives?  No, however it's a great place to start, and helps us build our own
+          informed views of what's really up in the world.</p>
           <p class="lead">Simply click on a country below to see the translated news from there, or scroll down to the global region consolidated view below.</p>
           <hr class="my-4" />
           <p><div id="vmap" style="width: 100%; height: 86vh;"></div></p>
@@ -171,57 +205,103 @@
           </div>
       </div>
       <br />
+
+      <!-- Continent Stories View -->
       <div id="main-container" class="container-fluid">
           <div class="row">
               <div class="col-sm">
-                  <div id="americas-top-news" class="list-group">
+                  <div id="north-america-top-news" class="list-group">
                       <button type="button" class="list-group-item list-group-item-action active">
-                          Americas
+                          North America
                       </button>
                   </div>
               </div>
               <div class="col-sm">
-                  <div id="emea-top-news" class="list-group">
+                  <div id="south-america-top-news" class="list-group">
                       <button type="button" class="list-group-item list-group-item-action active">
-                          EMEA
+                          South America
                       </button>
                   </div>
               </div>
               <div class="col-sm">
-                  <div id="apac-top-news" class="list-group">
+                  <div id="europe-top-news" class="list-group">
                       <button type="button" class="list-group-item list-group-item-action active">
-                          APAC
+                          Europe
                       </button>
                   </div>
               </div>
           </div>
-      </div>
-
-      <!-- Stories Modal -->
-      <div class="modal fade" id="storiesModal" tabindex="-1" role="dialog" aria-labelledby="storiesModalTitle" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Stories crazy stuff!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+          <br />
+          <div class="row">
+              <div class="col-sm">
+                  <div id="asia-top-news" class="list-group">
+                      <button type="button" class="list-group-item list-group-item-action active">
+                          Asia
                       </button>
                   </div>
-                  <div class="modal-body modal-scroll">
-                      <div id="modal-news" class="list-group">
-                          <!--<button type="button" class="list-group-item list-group-item-action active">
-                            Stories crazy stuff!
-                        </button>-->
-                      </div>
+              </div>
+              <div class="col-sm">
+                  <div id="africa-top-news" class="list-group">
+                      <button type="button" class="list-group-item list-group-item-action active">
+                          Africa
+                      </button>
                   </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              <div class="col-sm">
+                  <div id="australia-top-news" class="list-group">
+                      <button type="button" class="list-group-item list-group-item-action active">
+                          Australia
+                      </button>
                   </div>
               </div>
           </div>
-      </div>
+        </div>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  </body>
+        <!-- Stories Modal -->
+        <div class="modal fade" id="storiesModal" tabindex="-1" role="dialog" aria-labelledby="storiesModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Stories crazy stuff!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-scroll">
+                        <div id="modal-news" class="list-group">
+                            <!--<button type="button" class="list-group-item list-group-item-action active">
+                        Stories crazy stuff!
+                    </button>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message modal -->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">No stories..</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>We're really sorry, but we don't yet have any stories for that country.  If you would like to see a newspaper added, drop us a message here!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
 </html>

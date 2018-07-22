@@ -23,6 +23,8 @@ namespace NosyBot.Services.Dtos
         public DateTime PublishDate { get; set; }
         [ResultColumn]
         public string Country { get; set; }
+        [ResultColumn]
+        public string Continent { get; set; }
         public string Language { get; set; }
         public DateTime LastUpdated { get; set; }
     }

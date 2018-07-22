@@ -17,7 +17,7 @@ namespace NosyFrontend.Controllers
         {
             NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
 
-            WorldStoryRecords records = repo.GetLatestStories(count);
+            WorldStoryRecords records = repo.GetRegionStories(count);
 
             TranslateCommand translate = new TranslateCommand() { DisplayLanguage = displayLanguage };
 
@@ -69,6 +69,68 @@ namespace NosyFrontend.Controllers
             {
                 story.TranslatedTitle = story.Title;
 
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            NosyBot.Services.Utilities.ServiceProxies.GetTranslations(translate);
+
+            return records;
+        }
+
+        [Route("continents")]
+        public ActionResult<ContinentStoryRecords> Continents([FromQuery] int count = 10, [FromQuery] string displayLanguage = "en")
+        {
+            NosyBot.Services.Repositories.NosyRepository repo = new NosyBot.Services.Repositories.NosyRepository();
+
+            ContinentStoryRecords records = repo.GetContinentStories(count);
+
+            TranslateCommand translate = new TranslateCommand() { DisplayLanguage = displayLanguage };
+
+            // Translate NA
+            foreach (StoryRecord story in records.NorthAmerica)
+            {
+                story.TranslatedTitle = story.Title;
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            // Translate SA
+            foreach (StoryRecord story in records.SouthAmerica)
+            {
+                story.TranslatedTitle = story.Title;
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            // Translate EU
+            foreach (StoryRecord story in records.Europe)
+            {
+                story.TranslatedTitle = story.Title;
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            // Translate AS
+            foreach (StoryRecord story in records.Asia)
+            {
+                story.TranslatedTitle = story.Title;
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            // Translate AF
+            foreach (StoryRecord story in records.Africa)
+            {
+                story.TranslatedTitle = story.Title;
+                if (story.Language != null && story.Language != displayLanguage)
+                    translate.AddStory(story);
+            }
+
+            // Translate AU
+            foreach (StoryRecord story in records.Australia)
+            {
+                story.TranslatedTitle = story.Title;
                 if (story.Language != null && story.Language != displayLanguage)
                     translate.AddStory(story);
             }

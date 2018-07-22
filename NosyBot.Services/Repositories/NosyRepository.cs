@@ -182,7 +182,7 @@ namespace NosyBot.Services.Repositories
             return results;
         }
 
-        public WorldStoryRecords GetLatestStories(int NumberPerRegion)
+        public WorldStoryRecords GetRegionStories(int NumberPerRegion)
         {
             SqlConnection con = null;
             WorldStoryRecords results = new WorldStoryRecords();
@@ -200,6 +200,36 @@ namespace NosyBot.Services.Repositories
             catch (Exception ex)
             {
                 System.Diagnostics.Trace.TraceError("NosyRepo error in GetLatestStories. " + ex.ToString());
+            }
+            finally
+            {
+                if (con != null) con.Close();
+            }
+
+            return results;
+        }
+
+        public ContinentStoryRecords GetContinentStories(int NumberPerContinent)
+        {
+            SqlConnection con = null;
+            ContinentStoryRecords results = new ContinentStoryRecords();
+            try
+            {
+                con = new SqlConnection(System.Environment.GetEnvironmentVariable("NewsConnectionString", EnvironmentVariableTarget.Process));
+                con.Open();
+                using (var db = new Database(con))
+                {
+                    results.NorthAmerica = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'North America' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.SouthAmerica = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'South America' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.Europe = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'Europe' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.Asia = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'Asia' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.Africa = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'Africa' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                    results.Australia = db.Fetch<StoryRecord>($"SELECT * FROM Providers CROSS APPLY	(SELECT TOP ({NumberPerContinent}) * FROM Stories WHERE Providers.Continent = N'Australia' AND Stories.ProviderId = Providers.Id ORDER BY Stories.PublishDate DESC) AS st ORDER BY st.PublishDate DESC");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.TraceError("NosyRepo error in GetContinentStories. " + ex.ToString());
             }
             finally
             {
