@@ -24,3 +24,24 @@
     margin-left: 5px;
 }
 
+.news-pin {
+    font-size: 10px;
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.news-icon {
+    margin: 1px;
+    width: 25px;
+}
+
+.news-pin-header {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.jqvmap-pin {
+    opacity: 0.8;
+}
+

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <title>WuW?</title>
+    <title>What's Up, World?</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,6 +33,17 @@
                 scaleColors: ['#C8EEFF', '#006491'],
                 values: sample_data,
                 normalizeFunction: 'polynomial',
+                pins: {
+                    "ca": "<div class='news-pin'><div class='news-pin-header'>North America</div><img class='news-icon' src='img/countries/ca.png'/><img class='news-icon' src='img/providers/nationalpost.png'/> National Post<br><img class='news-icon' src='img/countries/us.png'/><img class='news-icon' src='img/providers/nytimes.png'/> New York Times<br><img class='news-icon' src='img/countries/mx.png'/><img class='news-icon' src='img/providers/elsoldemexico.png'/> El Sol de México</div>",
+                    "br": "<div class='news-pin'><div class='news-pin-header'>South America</div><img class='news-icon' src='img/countries/br.png'/><img class='news-icon' src='img/providers/oglobo.png' /> OGlobo<br><img class='news-icon' src='img/countries/pe.png'/><img class='news-icon' src='img/providers/elcomercio.png' /> El Comercio<br><img class='news-icon' src='img/countries/ar.png'/><img class='news-icon' src='img/providers/clarin.png' /> Clarin</div>",
+                    "de": "<div class='news-pin'><div class='news-pin-header'>Europe & Middle East</div><img class='news-icon' src='img/countries/de.png'/><img class='news-icon' src='img/providers/spiegel.png' /> Der Spiegel<br><img class='news-icon' src='img/countries/fr.png'/><img class='news-icon' src='img/providers/lemonde.png' /> Le Monde<br><img class='news-icon' src='img/countries/es.png'/><img class='news-icon' src='img/providers/elpais.png' /> EL PAÍS<br><img class='news-icon' src='img/countries/ru.png'/><img class='news-icon' src='img/providers/mkru.png' /> Московский Комсомолец</div>",
+                    "za": "<div class='news-pin'><div class='news-pin-header'>Africa</div><img class='news-icon' src='img/countries/za.png'/><img class='news-icon' src='img/providers/independentmedia.png' /> Independent Media</div>",
+                    "jp": "<div class='news-pin'><div class='news-pin-header'>Asia</div><img class='news-icon' title='Japan' src='img/countries/jp.png'/><img class='news-icon' src='img/providers/shimbun.png' /> Sankei Shimbun<br><img class='news-icon' title='China' src='img/countries/cn.png'/><img class='news-icon' src='img/providers/globaltimes.png' /> Global Times</div>",
+                    "au": "<div class='news-pin'><div class='news-pin-header'>Australia</div><img class='news-icon' src='img/countries/au.png'/><img class='news-icon' src='img/providers/theage.png' /> The Age</div>",
+                },
+                onLabelShow: function (event, label, code) {
+                    var test = "test";
+                },
                 onRegionClick: function (element, code, region) {
                     var message = 'You clicked "'
                         + region
@@ -92,45 +103,124 @@
                         $("#australia-top-news").html("<button type='button' class='list-group-item list-group-item-action active'>Australia</button>");
 
                         if (data["northAmerica"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["northAmerica"]) {
                                 var story = data["northAmerica"][i];
-                                $("#north-america-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#north-america-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='north-america-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='north-america-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["northAmerica"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#north-america-top-news").append(htmlString);
                         }
 
                         if (data["southAmerica"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["southAmerica"]) {
                                 var story = data["southAmerica"][i];
-                                $("#south-america-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#south-america-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='south-america-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='south-america-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["southAmerica"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#south-america-top-news").append(htmlString);
                         }
 
+                        //if (data["southAmerica"] != undefined) {
+                        //    for (var i in data["southAmerica"]) {
+                        //        var story = data["southAmerica"][i];
+                        //        $("#south-america-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+                        //    }
+                        //}
+
                         if (data["europe"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["europe"]) {
                                 var story = data["europe"][i];
-                                $("#europe-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#europe-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='europe-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='europe-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["europe"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#europe-top-news").append(htmlString);
                         }
 
                         if (data["asia"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["asia"]) {
                                 var story = data["asia"][i];
-                                $("#asia-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#asia-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='asia-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='asia-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["asia"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#asia-top-news").append(htmlString);
                         }
 
                         if (data["africa"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["africa"]) {
                                 var story = data["africa"][i];
-                                $("#africa-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#africa-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='africa-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='africa-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["africa"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#africa-top-news").append(htmlString);
                         }
 
                         if (data["australia"] != undefined) {
+                            var htmlString = "";
                             for (var i in data["australia"]) {
                                 var story = data["australia"][i];
-                                $("#australia-top-news").append(getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png"));
+
+                                htmlString += getStoryDiv(story["translatedTitle"], story["url"], story["logoUrl"], "img/countries/" + story["country"] + ".png");
+
+                                if (i == 10) {
+                                    // add expand button
+                                    htmlString += "<a href='#australia-exp' onClick='hideOnClick(this);' data-toggle='collapse' aria-expanded='false' aria-controls='australia-exp' class='list-group-item list-group-item-action hide-on-click' style='text-align: right;'>Expand >></a><div id='australia-exp' href='' class='collapse multi-collapse'>";
+                                }
                             }
+
+                            if (data["australia"].length > 10)
+                                htmlString += "</div >";
+
+                            $("#australia-top-news").append(htmlString);
                         }
                     }
             });
@@ -142,6 +232,12 @@
             return "<ul class='story-container list-group-item list-group-item-action'><li class='story-item story-icons'><div><div style='margin-bottom: 5px;'><img src='" + countryUrl + "' style='width:30px;'/></div><div><img src='" + logoUrl + "' style='width:30px;'/></div></div><li class='story-item story-text'><a target='_blank' href='" + storyUrl + "' role='button'>" + title + "</a></li></ul>";
         }
 
+        function getProviderDiv(title, countryUrl, logoUrl) {
+            // return "<a class='list-group-item list-group-item-action container' target='_blank' href='" + storyUrl + "' role='button'><img src='" + countryUrl + "' style='width:30px;'/><br><img src='" + logoUrl + "' style='width:30px;'/> " + title + "</a>";
+            //return "<div class='list-group-item list-group-item-action container'><div class='row'><div class='col-2'><div style='margin-bottom: 3px;'><img src='" + countryUrl + "' style='width:30px;'/></div><div><img src='" + logoUrl + "' style='width:30px;'/></div></div><div class='col-10'><a target='_blank' href='" + storyUrl + "' role='button'>" + title + "</a></div></div>";
+            return "";
+        }
+
         function ajustamodal() {
             var altura = $(window).height() - 180; //155; //value corresponding to the modal heading + footer
             $(".modal-scroll").css({ "height": altura, "overflow-y": "auto" });
@@ -151,6 +247,10 @@
             displayLanguage = language;
             refreshGlobalStories();
         }
+
+        function hideOnClick(element) {
+            $(element).hide();
+        }
       
     </script>
   </head>
@@ -158,7 +258,7 @@
       <nav class="navbar navbar-expand-lg navbar-light navbar-center bg-light sticky-top">
           <a class="navbar-brand" style="color: rgba(0, 0, 0, 0.5) ;" href="#">
               <img src="img/world2.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-              What's up, World?
+              What's Up, World?
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -171,15 +271,24 @@
                   <li class="nav-item">
                       <a class="nav-link" href="#">About</a>
                   </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Language
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#" onclick="setDisplayLanguage('en')">English</a>
-                          <a class="dropdown-item" href="#" onclick="setDisplayLanguage('de')">Deutsch</a>
-                      </div>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Sources</a>
                   </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Roadmap</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Contact</a>
+                  </li>
+                  <!--li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Language
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#" onclick="setDisplayLanguage('en')">English</a>
+            <a class="dropdown-item" href="#" onclick="setDisplayLanguage('de')">Deutsch</a>
+        </div>
+    </li-->
               </ul>
           </div>
       </nav>
@@ -187,10 +296,9 @@
       <!-- Jumbotron -->
 
       <div class="jumbotron">
-          <h1 class="display-4">What's up?</h1>
-          <p class="lead">How to sort fact from fiction in the world today?  By checking Facebook, Twitter or Google?  No, and let's say no to algorithms deciding what we see.  Just because it's possible doesn't make it a good idea.  Let's get back to basics, and trust professionals to descibe the complex events around us.
-          This web app is an attempt to showcase professional reporting from around the world.  Is journalism perfect, and do we always agree with their perspectives?  No, however it's a great place to start, and helps us build our own
-          informed views of what's really up in the world.</p>
+          <h1 class="display-4">What's Up, World?</h1>
+          <p class="lead">We want to showcase real news from real newspapers around the world.  The source newspapers will be updated periodically to reflect a balanced and wide-range of viewpoints, but always from professional news organizations.  
+          Are we the only ones who are tired of reading news from Facebook and Twitter?  Who cares what random people think, wouldn't you rather read what professionals have to say about things?</p>
           <p class="lead">Simply click on a country below to see the translated news from there, or scroll down to the global region consolidated view below.</p>
           <hr class="my-4" />
           <p><div id="vmap" style="width: 100%; height: 86vh;"></div></p>
