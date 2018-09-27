@@ -77,5 +77,7 @@ namespace NosyBot.Services.Utilities
 
             return results;
         }
+
+        public static async Task<GetTextAnalytics()
     }
 }
